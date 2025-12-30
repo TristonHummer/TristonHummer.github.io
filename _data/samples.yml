@@ -1,0 +1,4 @@
+samples:
+  - name: "My audio track"
+    url: "https://www.dropbox.com/scl/fi/sq5542kk95rmra29jsi0s/bioscan.wav?rlkey=ozs4fdysj0wuftqf1yr1ow8v1&st=4mowvwia&dl=0"
+    type: "audio/wav"

@@ -1,0 +1,28 @@
+{% comment %}
+Usage:
+{% include drive-audio.html url="https://drive.google.com/file/d/FILE_ID/view?usp=sharing" %}
+{% endcomment %}
+
+{% assign drive_url = include.url %}
+
+{% comment %}
+Extract the file ID from common Google Drive URL formats
+{% endcomment %}
+{% if drive_url contains "/file/d/" %}
+  {% assign file_id = drive_url | split: "/file/d/" | last | split: "/" | first %}
+{% elsif drive_url contains "id=" %}
+  {% assign file_id = drive_url | split: "id=" | last | split: "&" | first %}
+{% endif %}
+
+{% if file_id %}
+  <iframe
+    src="https://drive.google.com/file/d/{{ file_id }}/preview"
+    width="380"
+    height="48"
+    allow="autoplay"
+    style="border:none; display:inline-block;"
+    >
+  </iframe>
+{% else %}
+  <p><strong>Invalid Google Drive audio link.</strong></p>
+{% endif %}
